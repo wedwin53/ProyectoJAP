@@ -8,7 +8,7 @@ public class Producto {
 	public Producto(int codProducto, String nombreProducto, int precio) {
 		super();
 		this.codProducto = codProducto;
-		this.nombreProducto = nombreProducto;
+		//this.nombreProducto = nombreProducto;
 		this.precio = precio;
 	}
 	
@@ -17,12 +17,6 @@ public class Producto {
 	}
 	public void setCodProducto(int codProducto) {
 		this.codProducto = codProducto;
-	}
-	public String getNombreProducto() {
-		return nombreProducto;
-	}
-	public void setNombreProducto(String nombreProducto) {
-		this.nombreProducto = nombreProducto;
 	}
 	public int getPrecio() {
 		return precio;
