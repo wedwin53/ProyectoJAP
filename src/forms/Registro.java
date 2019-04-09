@@ -7,6 +7,7 @@ package forms;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import notas.NotaVenta;
 import notas.Notas;
 
 /**
@@ -225,19 +226,24 @@ public class Registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     ArrayList<Notas> listaVendedor = new ArrayList<Notas>();
+    ArrayList<NotaVenta> listaNotas = new ArrayList<>();
     
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        Notas nota = new Notas(cmbCodEjecutivo.getSelectedIndex(), cbmCodProducto.getSelectedIndex(), Integer.parseInt(txtMonto.getText()));
-	listaVendedor.add(nota);
-	mostrar();
+        //Notas nota = new Notas(cmbCodEjecutivo.getSelectedIndex(), cbmCodProducto.getSelectedIndex(), Integer.parseInt(txtMonto.getText()));
+        
+        NotaVenta notaVenta = new NotaVenta("PRODUCTO1", "425", "788", "493", "123");
+	//listaVendmatriz[i][2] = listaNotas.get(i).getVendedor2();edor.add(nota);
+        listaNotas.add(notaVenta);
+	//mostrar();
+        mostrar2();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     public void mostrar() {
 		String matriz[][] = new String [listaVendedor.size()][4];
 		for (int i = 0; i < listaVendedor.size(); i++) {
-			matriz[i][0] = listaVendedor.get(i).getCodProducto().toString();
-			matriz[i][1] = listaVendedor.get(i).getCodVendedor().toString();
-			matriz[i][2] = listaVendedor.get(i).getMontoVendido().toString();
+                    matriz[i][0] = listaVendedor.get(i).getCodProducto().toString();
+                    matriz[i][1] = listaVendedor.get(i).getCodVendedor().toString();
+                    matriz[i][2] = listaVendedor.get(i).getMontoVendido().toString();
 		}
 		
 		// cargamos los datos en la tabla
@@ -247,7 +253,28 @@ public class Registro extends javax.swing.JFrame {
                 "Productos", "Vendedor1", "Vendedor2", "Vendedor3", "Vendedor4"
             }
         ));
-	}
+    }
+    
+    public void mostrar2() {
+		String matriz[][] = new String [listaNotas.size()][5];
+		for (int i = 0; i < listaNotas.size(); i++) {
+                    matriz[i][0] = listaNotas.get(i).getProducto();
+                    matriz[i][1] = listaNotas.get(i).getVendedor1Ventas();
+                    matriz[i][2] = listaNotas.get(i).getVendedor2Ventas();
+                    matriz[i][3] = listaNotas.get(i).getVendedor3Ventas();
+                    matriz[i][4] = listaNotas.get(i).getVendedor4Ventas();
+		}
+		
+		// cargamos los datos en la tabla
+            tbNotas.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+            new String [] {
+                "Productos", "Vendedor1", "Vendedor2", "Vendedor3", "Vendedor4"
+            }
+        ));
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
