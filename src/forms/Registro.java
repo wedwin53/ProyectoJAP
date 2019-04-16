@@ -5,7 +5,14 @@
  */
 package forms;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import static java.lang.String.format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import notas.NotaVenta;
 import notas.Notas;
@@ -21,7 +28,26 @@ public class Registro extends javax.swing.JFrame {
      */
     public Registro() {
         initComponents();
+        
+        //Configuramos la fecha y Hora en el form
+        Date fecha = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MMM-YYYY");
+        fechaLabel.setText(formato.format(fecha));
+        Timer tiempo = new Timer(100, new Registro.Cronometro());
+        tiempo.start();
+        
     }
+    
+    class Cronometro implements ActionListener {
+    
+    public void actionPerformed(ActionEvent e){
+        Date sistemHora = new Date();
+        String formatoHora = "hh:mm:ss a";
+        SimpleDateFormat formato =  new SimpleDateFormat(formatoHora);
+        Calendar diaActual = Calendar.getInstance();
+        horaLabel.setText(String.format(formato.format(sistemHora), diaActual));
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,6 +60,8 @@ public class Registro extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        horaLabel = new javax.swing.JLabel();
+        fechaLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -62,6 +90,13 @@ public class Registro extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Registro de Notas de Venta");
 
+        horaLabel.setForeground(new java.awt.Color(255, 255, 255));
+        horaLabel.setText("hora");
+
+        fechaLabel.setForeground(new java.awt.Color(255, 255, 255));
+        fechaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fechaLabel.setText("fecha");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -69,14 +104,26 @@ public class Registro extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(271, 271, 271)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addComponent(fechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(horaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 10, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fechaLabel)
+                            .addComponent(horaLabel))))
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -214,7 +261,6 @@ public class Registro extends javax.swing.JFrame {
 
         jMenu1.setLabel("Menu");
         jMenuBar1.add(jMenu1);
-        jMenu1.getAccessibleContext().setAccessibleName("Menu");
 
         jMenu2.setText("Reportes");
         jMenu2.setToolTipText("");
@@ -314,6 +360,8 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cbmCodProducto;
     private javax.swing.JComboBox<String> cmbCodEjecutivo;
+    private javax.swing.JLabel fechaLabel;
+    private javax.swing.JLabel horaLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
