@@ -135,8 +135,8 @@ public class NotasForm extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// JOptionPane.showMessageDialog(null, "Guardado Exitosamente!");
 
-				Notas nota = new Notas(cmbVendedores.getSelectedIndex(), cboProductos.getSelectedIndex(), Integer.parseInt(txtTotalVenta.getText()));
-				listaVendedor.add(nota);
+				//Notas nota = new Notas(cmbVendedores.getSelectedIndex(), cboProductos.getSelectedIndex(), Integer.parseInt(txtTotalVenta.getText()));
+				//listaVendedor.add(nota);
 				mostrar();
 			}
 		});
