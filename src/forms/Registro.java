@@ -5,6 +5,7 @@
  */
 package forms;
 
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static java.lang.String.format;
@@ -278,7 +279,8 @@ public class Registro extends javax.swing.JFrame {
     ArrayList<NotaVenta> listaNotas = new ArrayList<>();
     ArrayList<Vendedor> listaVen = new ArrayList<>();
     ArrayList<Vendedor> listaVendor2 = new ArrayList<>();
-    //String matrizVenta [][] = new String [][];
+    ArrayList<ArrayList<Object>> list = new ArrayList<ArrayList<Object>>();
+    
     
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         //Notas nota = new Notas(cmbCodEjecutivo.getSelectedIndex(), cbmCodProducto.getSelectedIndex(), Integer.parseInt(txtMonto.getText()));
@@ -291,41 +293,41 @@ public class Registro extends javax.swing.JFrame {
         
         //nuevo objeto de notaVenta para setear los vendedores
         
-        NotaVenta notaVenta = new NotaVenta();
+        //NotaVenta notaVenta = new NotaVenta();
         
         switch(cmbCodEjecutivo.getSelectedItem().toString()){
             case "VENDEDOR001":
-                if(listaNotas.get(0).getVendedor1Ventas() > 0){
-                    int actual = listaNotas.get(0).getVendedor1Ventas();
-                    int sum2 = Integer.parseInt(txtMonto.getText());
-                    notaVenta.setVendedor1Ventas(actual + sum2);
-                    
-                    listaNotas.set(0, notaVenta);
-                }else{
-                notaVenta.setVendedor1Ventas(Integer.parseInt(txtMonto.getText()));
-                notaVenta.setProducto(cbmCodProducto.getSelectedItem().toString());
-                listaNotas.add(0, notaVenta);    
-                }
-                
+                NotaVenta notaVendedor1 = new NotaVenta(cbmCodProducto.getSelectedItem().toString(), Integer.parseInt(txtMonto.getText()), 0, 0, 0);
+                listaNotas.add(notaVendedor1);
+                //notaVenta.setProducto(cbmCodProducto.getSelectedItem().toString());
+                //notaVenta.setVendedor1Ventas(Integer.parseInt(txtMonto.getText()));
                 break;
             case "VENDEDOR002":
-                notaVenta.setVendedor2Ventas(Integer.parseInt(txtMonto.getText()));
-                notaVenta.setProducto(cbmCodProducto.getSelectedItem().toString());
-                listaNotas.add(1, notaVenta);
+                NotaVenta notaVendedor2 = new NotaVenta(cbmCodProducto.getSelectedItem().toString(), 0, Integer.parseInt(txtMonto.getText()), 0, 0);
+                listaNotas.add(notaVendedor2);
+                //notaVenta.setProducto(cbmCodProducto.getSelectedItem().toString());
+                //notaVenta.setVendedor2Ventas(Integer.parseInt(txtMonto.getText()));
                 break;
             case "VENDEDOR003":
-                notaVenta.setVendedor3Ventas(Integer.parseInt(txtMonto.getText()));
-                notaVenta.setProducto(cbmCodProducto.getSelectedItem().toString());
-                listaNotas.add(2, notaVenta);
+                NotaVenta notaVendedor3 = new NotaVenta(cbmCodProducto.getSelectedItem().toString(), 0, 0, Integer.parseInt(txtMonto.getText()), 0);
+                listaNotas.add(notaVendedor3);
+                //notaVenta.setProducto(cbmCodProducto.getSelectedItem().toString());
+                //notaVenta.setVendedor3Ventas(Integer.parseInt(txtMonto.getText()));
                 break;
             case "VENDEDOR004":
-                notaVenta.setVendedor4Ventas(Integer.parseInt(txtMonto.getText()));
-                notaVenta.setProducto(cbmCodProducto.getSelectedItem().toString());
-                listaNotas.add(3, notaVenta);
+                NotaVenta notaVendedor4 = new NotaVenta(cbmCodProducto.getSelectedItem().toString(), 0, 0, 0, Integer.parseInt(txtMonto.getText()));
+                listaNotas.add(notaVendedor4);
+                //notaVenta.setProducto(cbmCodProducto.getSelectedItem().toString());
+                //notaVenta.setVendedor4Ventas(Integer.parseInt(txtMonto.getText()));
                 break;
             default:
-                System.out.println("Escoga uno");
+                
         }
+        
+        
+        
+        //listaNotas.add(notaVenta);
+        
         
        
         mostrar2();

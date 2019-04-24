@@ -10,11 +10,16 @@ package notas;
  * @author edwin.rebolledo
  */
 public class NotaVenta {
+    
     String Producto;
     int vendedor1Ventas;
     int vendedor2Ventas;
     int vendedor3Ventas;
     int vendedor4Ventas;
+    
+    public NotaVenta(){
+        
+    }
 
     public NotaVenta(String Producto, int vendedor1Ventas, int vendedor2Ventas, int vendedor3Ventas, int vendedor4Ventas) {
         this.Producto = Producto;
@@ -22,10 +27,6 @@ public class NotaVenta {
         this.vendedor2Ventas = vendedor2Ventas;
         this.vendedor3Ventas = vendedor3Ventas;
         this.vendedor4Ventas = vendedor4Ventas;
-    }
-    
-    public NotaVenta(){
-        
     }
 
     public String getProducto() {
@@ -68,8 +69,6 @@ public class NotaVenta {
         this.vendedor4Ventas = vendedor4Ventas;
     }
 
-    
-    
     
 
     
