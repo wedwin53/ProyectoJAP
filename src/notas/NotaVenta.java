@@ -11,17 +11,21 @@ package notas;
  */
 public class NotaVenta {
     String Producto;
-    String vendedor1Ventas;
-    String vendedor2Ventas;
-    String vendedor3Ventas;
-    String vendedor4Ventas;
+    int vendedor1Ventas;
+    int vendedor2Ventas;
+    int vendedor3Ventas;
+    int vendedor4Ventas;
 
-    public NotaVenta(String Producto, String vendedor1Ventas, String vendedor2Ventas, String vendedor3Ventas, String vendedor4Ventas) {
+    public NotaVenta(String Producto, int vendedor1Ventas, int vendedor2Ventas, int vendedor3Ventas, int vendedor4Ventas) {
         this.Producto = Producto;
         this.vendedor1Ventas = vendedor1Ventas;
         this.vendedor2Ventas = vendedor2Ventas;
         this.vendedor3Ventas = vendedor3Ventas;
         this.vendedor4Ventas = vendedor4Ventas;
+    }
+    
+    public NotaVenta(){
+        
     }
 
     public String getProducto() {
@@ -32,37 +36,39 @@ public class NotaVenta {
         this.Producto = Producto;
     }
 
-    public String getVendedor1Ventas() {
+    public int getVendedor1Ventas() {
         return vendedor1Ventas;
     }
 
-    public void setVendedor1Ventas(String vendedor1Ventas) {
+    public void setVendedor1Ventas(int vendedor1Ventas) {
         this.vendedor1Ventas = vendedor1Ventas;
     }
 
-    public String getVendedor2Ventas() {
+    public int getVendedor2Ventas() {
         return vendedor2Ventas;
     }
 
-    public void setVendedor2Ventas(String vendedor2Ventas) {
+    public void setVendedor2Ventas(int vendedor2Ventas) {
         this.vendedor2Ventas = vendedor2Ventas;
     }
 
-    public String getVendedor3Ventas() {
+    public int getVendedor3Ventas() {
         return vendedor3Ventas;
     }
 
-    public void setVendedor3Ventas(String vendedor3Ventas) {
+    public void setVendedor3Ventas(int vendedor3Ventas) {
         this.vendedor3Ventas = vendedor3Ventas;
     }
 
-    public String getVendedor4Ventas() {
+    public int getVendedor4Ventas() {
         return vendedor4Ventas;
     }
 
-    public void setVendedor4Ventas(String vendedor4Ventas) {
+    public void setVendedor4Ventas(int vendedor4Ventas) {
         this.vendedor4Ventas = vendedor4Ventas;
     }
+
+    
     
     
 

@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static java.lang.String.format;
 import java.text.SimpleDateFormat;
+import java.time.Clock;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -275,8 +276,9 @@ public class Registro extends javax.swing.JFrame {
 
     ArrayList<Notas> listaVendedor = new ArrayList<Notas>();
     ArrayList<NotaVenta> listaNotas = new ArrayList<>();
-    ArrayList<Vendedor> listaVendor = new ArrayList<>();
+    ArrayList<Vendedor> listaVen = new ArrayList<>();
     ArrayList<Vendedor> listaVendor2 = new ArrayList<>();
+    //String matrizVenta [][] = new String [][];
     
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         //Notas nota = new Notas(cmbCodEjecutivo.getSelectedIndex(), cbmCodProducto.getSelectedIndex(), Integer.parseInt(txtMonto.getText()));
@@ -285,28 +287,47 @@ public class Registro extends javax.swing.JFrame {
         vendedor.setMontoVentas(Integer.parseInt(txtMonto.getText()));
         vendedor.setProductoVendido(cbmCodProducto.getSelectedItem().toString());
         
-        listaVendor.add(vendedor);
+        listaVen.add(vendedor);
         
-        for (int i = 0; i < listaVendor.size(); i++) {
-            System.out.println(listaVendor.get(i).getCodVendedor().toString());
-            
-            
+        //nuevo objeto de notaVenta para setear los vendedores
+        
+        NotaVenta notaVenta = new NotaVenta();
+        
+        switch(cmbCodEjecutivo.getSelectedItem().toString()){
+            case "VENDEDOR001":
+                if(listaNotas.get(0).getVendedor1Ventas() > 0){
+                    int actual = listaNotas.get(0).getVendedor1Ventas();
+                    int sum2 = Integer.parseInt(txtMonto.getText());
+                    notaVenta.setVendedor1Ventas(actual + sum2);
+                    
+                    listaNotas.set(0, notaVenta);
+                }else{
+                notaVenta.setVendedor1Ventas(Integer.parseInt(txtMonto.getText()));
+                notaVenta.setProducto(cbmCodProducto.getSelectedItem().toString());
+                listaNotas.add(0, notaVenta);    
+                }
+                
+                break;
+            case "VENDEDOR002":
+                notaVenta.setVendedor2Ventas(Integer.parseInt(txtMonto.getText()));
+                notaVenta.setProducto(cbmCodProducto.getSelectedItem().toString());
+                listaNotas.add(1, notaVenta);
+                break;
+            case "VENDEDOR003":
+                notaVenta.setVendedor3Ventas(Integer.parseInt(txtMonto.getText()));
+                notaVenta.setProducto(cbmCodProducto.getSelectedItem().toString());
+                listaNotas.add(2, notaVenta);
+                break;
+            case "VENDEDOR004":
+                notaVenta.setVendedor4Ventas(Integer.parseInt(txtMonto.getText()));
+                notaVenta.setProducto(cbmCodProducto.getSelectedItem().toString());
+                listaNotas.add(3, notaVenta);
+                break;
+            default:
+                System.out.println("Escoga uno");
         }
         
-        
-        
-        Notas notaVendedor = new Notas();
-        notaVendedor.setCodVendedor(vendedor.getCodVendedor());
-        notaVendedor.setCodProducto(vendedor.getProductoVendido());
-        notaVendedor.setMontoVendido(vendedor.getMontoVentas());
-        
-        
-        
        
-        NotaVenta notaVenta = new NotaVenta(notaVendedor.getCodProducto(), "425", "788", "493", "123");
-	//listaVendmatriz[i][2] = listaNotas.get(i).getVendedor2();edor.add(nota);
-        listaNotas.add(notaVenta);
-	//mostrar();
         mostrar2();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -331,10 +352,10 @@ public class Registro extends javax.swing.JFrame {
 		String matriz[][] = new String [listaNotas.size()][5];
 		for (int i = 0; i < listaNotas.size(); i++) {
                     matriz[i][0] = listaNotas.get(i).getProducto();
-                    matriz[i][1] = listaNotas.get(i).getVendedor1Ventas();
-                    matriz[i][2] = listaNotas.get(i).getVendedor2Ventas();
-                    matriz[i][3] = listaNotas.get(i).getVendedor3Ventas();
-                    matriz[i][4] = listaNotas.get(i).getVendedor4Ventas();
+                    matriz[i][1] = Integer.toString(listaNotas.get(i).getVendedor1Ventas());
+                    matriz[i][2] = Integer.toString(listaNotas.get(i).getVendedor2Ventas());
+                    matriz[i][3] = Integer.toString(listaNotas.get(i).getVendedor3Ventas());
+                    matriz[i][4] = Integer.toString(listaNotas.get(i).getVendedor4Ventas());
 		}
 		
             // cargamos los datos en la tabla
